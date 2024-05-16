@@ -6,7 +6,7 @@ import { Buttons } from "@/components/Buttons";
 import { Pillar } from "@/components/Pillar";
 import FinalPage from "@/components/FinalPage";
 import ProgressBar from "@/components/ProgressBar";
-import sondage from "@/sondage.json";
+import sondage from "@/Sondage.json";
 
 // Déclarer l'interface pour les questions
 interface Questions {
