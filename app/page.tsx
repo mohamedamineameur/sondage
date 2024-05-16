@@ -74,8 +74,9 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h1>Maturity Assessment Tool</h1>
-      {step > 0 && <ProgressBar step={step} totalSteps={totalSteps + 1} />}
+      
       <span>
+      {step > 0 && <ProgressBar step={step} totalSteps={totalSteps + 1} />}
         {step === 0 && <WelcomePage />}
         {isWithinValidRange && questions[pillars[currentPillarIndex] as keyof Questions] && (
           <Pillar
