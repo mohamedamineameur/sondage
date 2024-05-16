@@ -1,0 +1,27 @@
+{
+    "Stratégie": [
+      "Votre entreprise a-t-elle une vision et une mission clairement définies et communiquées à tous les niveaux de l'organisation ?",
+      "Votre entreprise dispose-t-elle d'une planification stratégique à long terme (3-5 ans) ?",
+      "Votre entreprise intègre-t-elle des objectifs de développement durable dans sa stratégie globale ?",
+      "Votre entreprise évalue-t-elle régulièrement les risques et les opportunités stratégiques ?"
+    ],
+    "Environnement": [
+      "Votre entreprise mesure-t-elle et réduit-elle ses émissions de gaz à effet de serre ?",
+      "Votre entreprise met-elle en œuvre des pratiques de gestion de l'eau pour minimiser l'impact environnemental ?",
+      "Votre entreprise adopte-t-elle des initiatives de réduction des déchets et de recyclage ?",
+      "Votre entreprise utilise-t-elle des sources d'énergie renouvelable ?"
+    ],
+    "Social": [
+      "Votre entreprise offre-t-elle des conditions de travail sûres et saines à ses employés ?",
+      "Votre entreprise promeut-elle la diversité et l'inclusion au sein de ses équipes ?",
+      "Votre entreprise participe-t-elle activement au développement des communautés locales ?",
+      "Votre entreprise propose-t-elle des opportunités de développement professionnel et de formation continue à ses employés ?"
+    ],
+    "Gouvernance": [
+      "Votre entreprise a-t-elle une structure de gouvernance claire avec des rôles et des responsabilités définis ?",
+      "Votre entreprise respecte-t-elle les réglementations et les lois applicables dans ses activités ?",
+      "Votre entreprise a-t-elle des politiques et des procédures en place pour prévenir les conflits d'intérêts ?",
+      "Votre entreprise publie-t-elle régulièrement des rapports de transparence et de responsabilité ?"
+    ]
+  }
+  
