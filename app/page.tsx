@@ -8,20 +8,29 @@ import FinalPage from "@/components/FinalPage";
 import ProgressBar from "@/components/ProgressBar";
 import sondage from "@/sondage.json";
 
+// Déclarer l'interface pour les questions
+interface Questions {
+  Stratégie: string[];
+  Environnement: string[];
+  Social: string[];
+  Gouvernance: string[];
+}
+
+// Déclarer le type pour sondage.json
+const sondageData: Questions = sondage as Questions;
+
 export default function Home() {
   const [step, setStep] = useState(0);
   const [answerSelected, setAnswerSelected] = useState(false);
-  const [pillarRatings, setPillarRatings] = useState<{
-    [key: string]: (number | null)[];
-  }>({});
-  const [questions, setQuestions] = useState<{ [key: string]: string[] }>({});
+  const [pillarRatings, setPillarRatings] = useState<{ [key: string]: (number | null)[] }>({});
+  const [questions, setQuestions] = useState<Questions | null>(null);
 
   useEffect(() => {
-    setQuestions(sondage);
+    setQuestions(sondageData);
 
     const initialRatings: { [key: string]: (number | null)[] } = {};
-    Object.keys(sondage).forEach((pillar) => {
-      initialRatings[pillar] = Array(sondage[pillar].length).fill(null);
+    (Object.keys(sondageData) as (keyof Questions)[]).forEach((pillar) => {
+      initialRatings[pillar] = Array(sondageData[pillar].length).fill(null);
     });
     setPillarRatings(initialRatings);
   }, []);
@@ -44,31 +53,35 @@ export default function Home() {
     setAnswerSelected(true);
   };
 
+  if (!questions) {
+    return <div>Loading...</div>;
+  }
+
   const pillars = Object.keys(questions);
   const totalSteps = pillars.reduce(
-    (acc, pillar) => acc + (questions[pillar]?.length || 0),
+    (acc, pillar) => acc + (questions[pillar as keyof Questions]?.length || 0),
     0
   );
 
   const isWithinValidRange = step > 0 && step <= totalSteps;
   const currentPillarIndex = isWithinValidRange
-    ? Math.floor((step - 1) / (questions[pillars[0]]?.length || 1))
+    ? Math.floor((step - 1) / (questions[pillars[0] as keyof Questions]?.length || 1))
     : 0;
   const currentQuestionIndex = isWithinValidRange
-    ? (step - 1) % (questions[pillars[0]]?.length || 1)
+    ? (step - 1) % (questions[pillars[0] as keyof Questions]?.length || 1)
     : 0;
 
   return (
     <main className={styles.main}>
       <h1>Maturity Assessment Tool</h1>
+      {step > 0 && <ProgressBar step={step} totalSteps={totalSteps + 1} />}
       <span>
-        {step > 0 && <ProgressBar step={step} totalSteps={totalSteps + 1} />}
         {step === 0 && <WelcomePage />}
-        {isWithinValidRange && questions[pillars[currentPillarIndex]] && (
+        {isWithinValidRange && questions[pillars[currentPillarIndex] as keyof Questions] && (
           <Pillar
             pillar={pillars[currentPillarIndex]}
             question={
-              questions[pillars[currentPillarIndex]][currentQuestionIndex]
+              questions[pillars[currentPillarIndex] as keyof Questions][currentQuestionIndex]
             }
             questionIndex={currentQuestionIndex}
             step={step}
